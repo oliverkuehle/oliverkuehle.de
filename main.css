@@ -2,7 +2,7 @@
 
 /* Define color variables */
 :root {
-  --color-background: #fffdf5;
+  --color-background: #fffef8;
   --color-text-primary: rgb(58, 58, 58);
   --color-text-secondary: rgb(115, 115, 115);
   --color-text-tertiary: rgb(159, 159, 159);
@@ -88,7 +88,7 @@ body {
 }
 
 .nav {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .nav__section h3 {
@@ -100,29 +100,12 @@ body {
   padding-bottom: 5px;
 }
 
-.nav__links {
-  margin-bottom: 3rem;
-  display: flex;
-  gap: 0.7rem;
-
-  a {
-    color: var(--color-text-primary);
-    text-decoration: underline;
-    text-decoration-color: var(--color-text-secondary);
-
-    &:hover {
-      color: var(--color-text-secondary);
-    }
-  }
-}
-
 .nav__list {
   padding-left: 20px;
   margin-bottom: 30px;
 
   li {
     margin-bottom: 0.8rem;
-    color: var(--color-text-secondary);
 
     &::marker {
       color: var(--color-text-secondary);
@@ -130,23 +113,30 @@ body {
 
     a {
       color: var(--color-text-primary);
-      text-decoration: underline;
-      text-decoration-color: var(--color-text-secondary);
-
+      text-decoration: none;
+      
       &:hover {
         color: var(--color-text-secondary);
+        text-decoration: underline;
       }
+    }
+
+    .prefix {
+      font-weight: 100;
+      
+      color: var(--color-text-secondary);
     }
   }
 }
 
 span.material-symbols-rounded {
   vertical-align: bottom;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   font-size: 0.8em;
   vertical-align: middle;
   position: relative;
   bottom: 3px;
+  left: -2px;
 }
 
 .cc {
@@ -182,8 +172,6 @@ span.material-symbols-rounded {
   }
 
   .nav {
-    margin-top: 2.5rem !important;
-
     > .nav__list {
       margin-bottom: 2rem !important;
     }
