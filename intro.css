@@ -65,9 +65,8 @@
 .intro__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  margin: 2em 0;
-  font-size: 0.98rem;
+  gap: 10px 24px;
+  margin: 2em 0;  
 }
 
 @media (max-width: 575px) {

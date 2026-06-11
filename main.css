@@ -131,7 +131,7 @@ h1 {
   font-size: clamp(1.65rem, 4vw, 2rem);
   font-weight: 300;
   line-height: 1.1;
-  margin: 0 0 1.4rem;
+  margin: 0 0 2rem;
 }
 h2 {
   font-size: clamp(1.3rem, 3vw, 1.5rem);
@@ -195,14 +195,14 @@ blockquote {
 
 /* ---------- Section / List ---------- */
 .section {
-  margin-top: 2.1rem;
+  margin-top: 2rem;
 }
 
 .header {
   margin: 0 0 0.2em 0;
   color: var(--ink-2);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 300;
   border-bottom: 0.5px solid var(--rule-soft);
   display: flex;
   align-items: baseline;
@@ -239,9 +239,10 @@ blockquote {
 .row {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 25px;
+  gap: 20px;
   align-items: baseline;
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
+  margin-bottom: 0;
 }
 
 .row__date {
@@ -263,6 +264,10 @@ blockquote {
 .row__title {
   min-width: 0;
   color: var(--ink);
+
+  &:not(a span) {
+    line-height: 1.4;
+  }
 }
 
 @media (max-width: 575px) {

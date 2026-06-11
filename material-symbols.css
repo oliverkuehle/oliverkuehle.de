@@ -23,10 +23,8 @@
 }
 
 .open_in_new {
-  font-size: 0.78em;  
-  bottom: 3px;
-  margin-left: 2px;
-  color: var(--ink-2);
+  font-size: 0.8em;  
+  bottom: 3.5px;
 }
 
 .arrow_forward {
