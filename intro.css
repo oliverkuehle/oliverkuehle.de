@@ -1,0 +1,79 @@
+/* ---------- Monogram + Speech bubble ---------- */
+.monogram-speech {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.speech {
+  margin-left: 16px;
+  height: fit-content;
+  position: relative;
+  margin: 0;
+  margin-top: 3px;
+  padding: 11px 17px;
+  background: var(--paper-sunk);
+  border: 0.5px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  opacity: 0.9;
+}
+.speech::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 22px;
+  width: 15px;
+  height: 11px;
+  background: var(--paper-sunk);
+  border-left: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  transform: translateY(-50%) rotate(52deg);
+}
+
+/* ---------- Intro ---------- */
+.intro_pic {
+  display: block;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  flex: 0 0 auto;
+  height: 145px;
+  width: auto;
+}
+
+.intro__lead {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+}
+.intro__greeting {
+  line-height: 1.55;
+  font-size: 1.06rem;
+}
+.intro__greeting .line {
+  display: block;
+}
+.intro__greeting .line + .line {
+  margin-top: 3px;
+}
+
+.intro__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 2em 0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 575px) {
+  .intro__lead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}

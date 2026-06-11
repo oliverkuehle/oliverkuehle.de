@@ -1,200 +1,273 @@
-@import "stylesheets/fadeinall.css";
-
-/* Define color variables */
-:root {
-  --color-background: #fffef8;
-  --color-text-primary: rgb(58, 58, 58);
-  --color-text-secondary: rgb(115, 115, 115);
-  --color-text-tertiary: rgb(159, 159, 159);
-  --color-shadow: rgba(0, 0, 0, 0.1);
-}
-
-@font-face {
-  font-family: Chivo;
-  src: url("resources/fonts/chivo/Chivo-Light.otf");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: Chivo;
-  src: url("resources/fonts/chivo/Chivo-Regular.otf");
-  font-weight: bold;
-}
-
-/************************/
+@import "./variables.css";
+@import "./material-symbols.css";
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--color-background);
 }
 
-.container {
-  font-family: "Chivo";
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   min-height: 100svh;
+  text-shadow: var(--shadow);
+  opacity: 1;
+  transition: opacity 1s normal;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+::selection {
+  background: rgba(58, 58, 58, 0.12);
+}
+
+.page {
+  padding: 50px 100px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.content {
-  align-self: center;
-  padding-bottom: 10vw;
-  text-shadow: 0 1px 4px var(--color-shadow);
-  width: fit-content;
-  max-width: 49rem;
-}
-
-.banner {
-  display: flex;
   align-items: center;
-  padding: 2rem 4vw;
+  gap: 40px;
+}
 
-  img {
-    width: 42px;
-    margin-right: 1rem;
+.page__header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  width: 100%;
+}
+
+.page__content {  
+  max-width: 650px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .page {
+    padding: 40px 35px;
   }
 }
 
-.bio {
-  width: 100%;
-  display: none;
-  font-style: italic;
-  color: var(--color-text-secondary);
-  text-shadow: 0 1px 4px var(--color-shadow);
+/* ---------- Meta ---------- */
+
+.page__header aside {
+  display: flex;
+  align-content: start;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  text-align: end;
 }
 
-.intro__pic {
-  display: block;
-  border-radius: 10px;
-  height: 145px;
-  box-shadow: 0 0 10px 0 var(--color-shadow);
+.meta-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 2px;
 }
 
-.intro__text {
-  align-self: center;
-  color: var(--color-text-primary);
+/* ---------- OK monogram mark ---------- */
+.monogram--png {
+  display: inline-grid;
+  place-items: center;
+  user-select: none;
+  overflow: visible;
+}
+.monogram--png.large {
+  width: 42px;
+}
+.monogram--png.medium {
+  width: 24px;
 }
 
-.intro__text--line {
-  display: block;
-  white-space: nowrap;
-  padding-bottom: 10px;
+/* .monogram--text {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.78;
+  color: var(--ink);
+  transform: rotate(90deg);
+  transform-origin: center;
+} */
+
+/* ---------- Links ---------- */
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--rule);
+}
+a:hover {
+  color: var(--ink-2);
+  text-decoration-color: currentColor;
+}
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.intro__text--linebreak {
-  white-space: nowrap;
+a.soft {
+  color: var(--ink-2);
+}
+a.soft:hover {
+  color: var(--ink);
 }
 
-.nav {
-  margin-top: 2rem;
+/* ---------- Headings ---------- */
+h1 {
+  font-size: clamp(1.65rem, 4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 0 0 1.4rem;
+}
+h2 {
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
+  font-weight: 320;
+  line-height: 1.25;
+  margin: 2rem 0 0.6rem;
+}
+h3 {
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-weight: 350;
+  line-height: 1.35;
+  margin: 2rem 0 0.6rem;
 }
 
-.nav__section h3 {
-  margin-bottom: 10px;
-  color: var(--color-text-secondary);
-  font-size: 1.25rem;
-  font-weight: normal;
-  border-bottom: 0.5px solid var(--color-text-secondary);
-  padding-bottom: 5px;
-}
+/* ---------- Lists ---------- */
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
 
-.nav__list {
-  padding-left: 20px;
-  margin-bottom: 30px;
-
-  li {
-    margin-bottom: 0.8rem;
+  li, li {
+    margin-bottom: 0.7rem;
 
     &::marker {
-      color: var(--color-text-secondary);
+      color: var(--ink-2);
     }
+  }    
+}
 
-    a {
-      color: var(--color-text-primary);
-      text-decoration: none;
-      
-      &:hover {
-        color: var(--color-text-secondary);
-        text-decoration: underline;
-      }
-    }
-
-    .prefix {
-      font-weight: 100;
-      
-      color: var(--color-text-secondary);
-    }
+/* ---------- Code ---------- */
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  background: var(--paper-sunk);
+  padding: 1px 5px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 0.5px var(--rule-soft);
+  font-size: 0.85em;
+}
+pre {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  background: var(--paper-sunk);
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 0.5px var(--rule-soft);
+  
+  code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
-span.material-symbols-rounded {
-  vertical-align: bottom;
-  color: var(--color-text-primary);
-  font-size: 0.8em;
-  vertical-align: middle;
-  position: relative;
-  bottom: 3px;
-  left: -2px;
+/* ---------- Blockquote ---------- */
+blockquote {
+  margin: 1.6rem 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-2);
+  font-style: italic;
 }
 
-.cc {
-  color: var(--color-text-tertiary);
-  margin-top: auto;
-  padding-bottom: 2px;
-  padding-left: 8px;
+/* ---------- Section / List ---------- */
+.section {
+  margin-top: 2.1rem;
 }
 
-/************************/
-
-/* Small devices */
-@media only screen and (max-width: 599px) {
-  .content {
-    margin: 0 2rem;
-  }
-
-  .bio--mobile {
-    display: block !important;
-    max-width: 360px;
-  }
-
-  .intro__pic {
-    margin: 0 0 20px 0;
-  }
-
-  .intro__text--line {
-    padding-bottom: 8px;
-  }
-
-  .intro {
-    margin-left: 1.2rem !important;
-  }
-
-  .nav {
-    > .nav__list {
-      margin-bottom: 2rem !important;
-    }
+.header {
+  margin: 0 0 0.2em 0;
+  color: var(--ink-2);
+  font-size: 1.25rem;
+  font-weight: 400;
+  border-bottom: 0.5px solid var(--rule-soft);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+ 
+  * {
+    text-decoration: none !important; 
   }
 }
 
-/* Medium and large devices */
-@media only screen and (min-width: 600px) {
-  .content {
-    margin: 0 8rem;
+.header .heading {
+  color: var(--ink-2) !important;
+}
+.header .heading:hover {
+  color: var(--ink) !important;
+}
+.header .action {
+  flex: 0 0 auto;
+  margin-left: 1rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.header .action:hover {
+  color: var(--ink);
+}
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 25px;
+  align-items: baseline;
+  padding: 0.4rem 0;
+}
+
+.row__date {
+  color: var(--ink-3);
+  font-size: 0.8rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  
+  &.yyyy {
+    width: 32px;
   }
 
-  .bio--desktop {
-    display: block !important;
-    margin-top: 1rem;
+  &.yyyy-mm {
+    width: 55px;
   }
+}
 
-  .intro__text--line {
-    padding-bottom: 10px;
-  }
+.row__title {
+  min-width: 0;
+  color: var(--ink);
+}
 
-  .intro {
-    display: inline-flex;
-    column-gap: 30px;
+@media (max-width: 575px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 }

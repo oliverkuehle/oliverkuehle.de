@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Chivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("resources/fonts/chivo-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("resources/fonts/chivo-italic.woff2") format("woff2");
+}
+
+:root {
+  /* Color */
+  --paper: #fffef8;
+  --paper-sunk: #faf8ef;
+  --ink: rgb(58, 58, 58);
+  --ink-2: rgb(115, 115, 115);
+  --ink-3: rgb(159, 159, 159);
+  --rule: rgba(115, 115, 115, 0.32);
+  --rule-soft: rgba(115, 115, 115, 0.16);
+  --shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  /* Font */
+  --font: "Chivo", system-ui, sans-serif;
+}

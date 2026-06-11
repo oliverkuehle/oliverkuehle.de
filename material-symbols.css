@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Material Symbols Rounded";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("resources/fonts/material-symbols-rounded-subset.woff2")
+    format("woff2");
+}
+
+.msr {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  font-feature-settings: "liga" 1;
+  -webkit-font-feature-settings: "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  position: relative;
+}
+
+.open_in_new {
+  font-size: 0.78em;  
+  bottom: 3px;
+  margin-left: 2px;
+  color: var(--ink-2);
+}
+
+.arrow_forward {
+  font-size: 1em;
+  bottom: 1px;
+  margin-left: 1px;
+}

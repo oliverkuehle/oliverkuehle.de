@@ -1,151 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Oliver</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oliver Kühle</title>
     <link rel="icon" href="resources/favicon.png" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="intro.css" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,200"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
     />
   </head>
-  <body class="container">
-    <div id="fadein"></div>
-
-    <header class="banner">
-      <a href="index.html">
-        <img
-          src="resources/OKIcon.png"
-          alt="Initials 'OK' rotated by 90deg, smybolizing a swaggy stick figure"
-        />
-      </a>
-      <span class="bio bio--mobile"
-        >"Passionate about creating products that make our world better and
-        people's lives easier."</span
-      >
-    </header>
-
-    <main class="content">
-      <div class="intro">
-        <img
-          class="intro__pic"
-          src="resources/profilepicture.jpg"
-          alt="Picture of Oliver Kühle"
-        />
-        <div class="intro__text">
-          <span class="intro__text--line">Hey, </span>
-          <span class="intro__text--line"
-            >I'm <b>Oliver</b> (Hans) Kühle,
-          </span>
-          <span class="intro__text--linebreak"
-            >a human-centric <b>software developer</b></span
-          >
-          <span class="intro__text--linebreak"
-            >and aspiring <b>usability engineer</b>.</span
-          >
+  <body>
+    <div class="page">
+      <div class="page__header">
+        <div class="monogram-speech">
+          <img
+            src="resources/ok-monogram.png"
+            alt="OK monogram"
+            class="monogram--png large"
+          />
+          <p class="speech">
+            "Working on creating perfect things in an imperfect world,"
+          </p>
         </div>
       </div>
 
-      <div class="bio bio--desktop">
-        <span
-          >"Passionate about creating products that make our world better and
-          people's lives easier."</span
-        >
-      </div>
+      <article class="page__content">
+        <div class="intro__lead">
+          <img
+            class="intro_pic"
+            src="resources/profile-picture.jpg"
+            alt="Portrait of Oliver Kühle"
+          />
+          <div class="intro__greeting">
+            <span class="line">Hey,</span>
+            <span class="line">I'm <b>Oliver Kühle</b>,</span>
+            <span class="line"
+              >a human-centric <b>software and usability engineer</b>.</span
+            >
+          </div>
+        </div>
+        <nav class="intro__links">
+          <a href="example-post.html">About me</a>
+          <a href="example-post.html">What I'm doing now</a>
+        </nav>
 
-      <div class="nav">
-        <div class="nav__section">
-          <ul class="nav__list">
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://drive.google.com/file/d/1C70PlljbZK0NQK7cW6ij5T2o4BOt1n42/view?usp=sharing"
-                >Résumé
-                <span class="material-symbols-rounded">open_in_new</span></a
-              >
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/oliverkuehle"
-                >GitHub
-                <span class="material-symbols-rounded">open_in_new</span></a
-              >
+        <section class="section">
+          <h3 class="header">
+            <a class="heading" href="example-moc.html">Publications</a>
+            <a class="action" href="example-moc.html"
+              >View all <span class="msr arrow_forward">arrow_forward</span></a
+            >
+          </h3>
+          <ul class="rows">
+            <li class="row">
+              <span class="row__date yyyy">2026</span>
+              <span class="row__title">
+                <a href="example-post.html">Example post</a>
+              </span>
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div class="nav__section">
-          <h3>Publications</h3>
-          <ul class="nav__list">
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://doi.org/10.48550/arXiv.2506.03741"
-                ><span class="prefix">[arXiv]</span> PromptCanvas: Composable
-                Prompting Workspaces Using Dynamic Widgets for Exploration and
-                Iteration in Creative Writing
-                <span class="material-symbols-rounded">open_in_new</span>
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://doi.org/10.1145/3706599.3720243"
-                ><span class="prefix">[CHI EA '25]</span> Composable Prompting
-                Workspaces for Creative Writing: Exploration and Iteration Using
-                Dynamic Widgets
-                <span class="material-symbols-rounded">open_in_new</span>
-              </a>
+        <section class="section">
+          <h3 class="header">
+            <span><a class="heading" href="example-moc.html">Writing</a></span>
+            <a class="action" href="example-moc.html"
+              >View all <span class="msr arrow_forward">arrow_forward</span></a
+            >
+          </h3>
+          <ul class="rows">
+            <li class="row">
+              <span class="row__date yyyy">2026</span>
+              <span class="row__title">
+                <a href="example-post.html">Example post</a>
+              </span>
             </li>
           </ul>
-        </div>
-        <div class="nav__section">
-          <h3>Projects</h3>
-          <ul class="nav__list">
-            <li>
-              <span class="prefix">[Master's module] [Ongoing]</span> Leveraging Spatial
-              Contextualization and visionOS Immersion to Enhance Memory Recall
-              and Emotional Connection
-            </li>
-            <li>
-              <span class="prefix">[Bachelor's thesis]</span> PromptCanvas:
-              Composable Prompting Workspaces for Exploration and Iteration
-            </li>
-            <li>
-              <span class="prefix">[Bachelor's module]</span> RoboRally: Online
-              multiplayer adaptation of the analogue board game
-            </li>
-            <li>
-              <span class="prefix">[Systematic Literature Review]</span>
-              Exploring the Impact of Domestic Robotics on Preventing Lonely
-              Deaths among Japan's Hikikomori
+        </section>
+
+        <section class="section">
+          <h3 class="header">
+            <span><a class="heading" href="example-moc.html">Projects</a></span>
+            <a class="action" href="example-moc.html"
+              >View all <span class="msr arrow_forward">arrow_forward</span></a
+            >
+          </h3>
+          <ul class="rows">
+            <li class="row">
+              <span class="row__date yyyy">2026</span>
+              <span class="row__title">
+                <a href="example-post.html">Example post</a>
+              </span>
             </li>
           </ul>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <span class="cc"
-        ><small
-          >©
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          Oliver Kühle. All Rights Reserved.</small
-        ></span
-      >
-    </footer>
-
-    <script src="fadeinall.js"></script>
-    <script src="app.js"></script>
+        </section>        
+      </article>
+    </div>
   </body>
 </html>

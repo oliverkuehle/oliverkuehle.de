@@ -262,3 +262,5 @@ scenicView.properties
 .vscode
 
 options.json
+
+_/**
