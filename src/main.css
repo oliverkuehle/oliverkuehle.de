@@ -243,7 +243,7 @@ blockquote {
 
 .row {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 55px 1fr;
   gap: 15px;
   align-items: baseline;
   padding: 0.5rem 0;

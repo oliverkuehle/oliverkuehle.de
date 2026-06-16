@@ -103,7 +103,8 @@ module.exports = function (eleventyConfig) {
     api
       .getFilteredByGlob(CONTENT_GLOBS)
       .filter((item) => item.data.published)
-      .sort((a, b) => b.date - a.date)
+      // "ongoing" notes (ongoing work) float to the top, then newest first.
+      .sort((a, b) => (b.data.ongoing ? 1 : 0) - (a.data.ongoing ? 1 : 0) || b.date - a.date)
   );
 
   // Unique, normalised list of keywords across all published notes.

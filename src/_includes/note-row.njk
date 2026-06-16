@@ -1,7 +1,7 @@
 {%- macro noteRow(note) -%}
 <li class="row">
   <span class="row__meta">
-    <span>{{ note.date | monthYear }}</span>
+    <span>{% if note.data.ongoing %}Ongoing{% else %}{{ note.date | monthYear }}{% endif %}</span>
   </span>
   <span class="row__title">
     {%- if note.data.redirect %}
