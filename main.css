@@ -199,34 +199,11 @@ blockquote {
   margin-top: 3rem;
 }
 
-.header {
-  margin: 0 0 0.2em 0;
-  border-bottom: 0.5px solid var(--rule-soft);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
- 
-  * {
-    text-decoration: none !important; 
-  }
-}
-
-.header .heading {
-  margin: 0;
+.header {  
   font-size: 1.2rem;
   color: var(--ink-2) !important;
-}
-
-.header .action {
-  flex: 0 0 auto;
-  margin-left: 1rem;
-  font-size: 0.82rem;
-  white-space: nowrap;
-  color: var(--ink-3) !important;
-
-  &:hover {
-    color: var(--ink-2) !important;
-  }
+  margin: 0 0 0.2em 0;
+  border-bottom: 0.5px solid var(--rule-soft);  
 }
 
 .rows {
@@ -261,11 +238,6 @@ blockquote {
   font-variant-numeric: tabular-nums;
 }
 
-.row__meta > * + *::before {
-  content: "-";
-  margin: 0 0.5em;
-}
-
 .row__title {
   min-width: 0;
   color: var(--ink);
@@ -288,7 +260,6 @@ blockquote {
   }
 
   a {
-    /* color: var(--ink-2); */
     
     &::before {
       content: "#";
