@@ -19,6 +19,7 @@ body {
   text-shadow: var(--shadow);
   opacity: 1;
   transition: opacity 1s normal;
+  font-size: 1em;
 
   @starting-style {
     opacity: 0;
@@ -162,7 +163,7 @@ ul, ol {
 
 /* ---------- Code ---------- */
 code {
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-family: var(--font-mono);
   background: var(--paper-sunk);
   padding: 1px 5px;
   border-radius: 4px;
@@ -170,7 +171,7 @@ code {
   font-size: 0.85em;
 }
 pre {
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-family: var(--font-mono);
   background: var(--paper-sunk);
   padding: 0.5rem;
   border-radius: 4px;
@@ -195,14 +196,11 @@ blockquote {
 
 /* ---------- Section / List ---------- */
 .section {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .header {
   margin: 0 0 0.2em 0;
-  color: var(--ink-2);
-  font-size: 1.25rem;
-  font-weight: 300;
   border-bottom: 0.5px solid var(--rule-soft);
   display: flex;
   align-items: baseline;
@@ -214,20 +212,30 @@ blockquote {
 }
 
 .header .heading {
+  margin: 0;
+  font-size: 1.2rem;
   color: var(--ink-2) !important;
+
+  a {
+    color: inherit !important;
+    
+    &:hover {
+      color: var(--ink) !important;
+    }
+  }
+
 }
-.header .heading:hover {
-  color: var(--ink) !important;
-}
+
 .header .action {
   flex: 0 0 auto;
   margin-left: 1rem;
   font-size: 0.82rem;
-  color: var(--ink-3);
   white-space: nowrap;
-}
-.header .action:hover {
-  color: var(--ink);
+  color: var(--ink-3) !important;
+
+  &:hover {
+    color: var(--ink-2) !important;
+  }
 }
 
 .rows {
@@ -237,28 +245,25 @@ blockquote {
 }
 
 .row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 20px;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
   padding: 0.5rem 0;
-  margin-bottom: 0;
 }
 
-.row__date {
+.row__meta {
+  display: flex;
+  
+  flex-wrap: wrap;
+  align-items: baseline;
   color: var(--ink-3);
   font-size: 0.8rem;
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  
-  &.yyyy {
-    width: 32px;
-  }
+}
 
-  &.yyyy-mm {
-    width: 55px;
-  }
+.row__meta > * + *::before {
+  content: "-";
+  margin: 0 0.5em;
 }
 
 .row__title {
@@ -270,9 +275,31 @@ blockquote {
   }
 }
 
-@media (max-width: 575px) {
-  .row {
-    grid-template-columns: 1fr;
-    gap: 2px;
+.keywords {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em 0.9em;
+  padding: 0;
+  margin: 0.7rem 0 0;
+  font-size: 0.95em;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: var(--ink-2);
+    text-decoration: none;
+
+    &::before {
+      content: "#";
+      margin-right: 0.1em;
+      color: var(--ink-3);
+    }
+
+    &:hover {
+      color: var(--ink);
+    }
   }
 }

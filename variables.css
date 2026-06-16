@@ -28,4 +28,5 @@
 
   /* Font */
   --font: "Chivo", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
