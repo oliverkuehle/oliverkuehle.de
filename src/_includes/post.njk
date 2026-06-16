@@ -1,0 +1,33 @@
+---
+layout: base.njk
+---
+<div class="page page--child">
+  <div class="page__header">
+    <a href="/" style="text-decoration: none">
+      <img
+        src="/resources/ok-monogram.png"
+        alt="OK monogram"
+        class="monogram--png medium"
+        style="width: 24px"
+      />
+    </a>
+    <aside>
+    {# {%- if keywords %}
+      <ul class="keywords">
+        {%- for keyword in keywords %}
+        <li><a href="/{{ keyword | slugify }}.html">{{ keyword | lower }}</a></li>
+        {%- endfor %}
+      </ul>
+    {%- endif %} #}
+      <div>
+        <div class="meta-label">Published</div>
+        {{ date | readableDate }}
+      </div>
+    </aside>
+  </div>
+
+  <article class="page__content">
+    <h1>{{ title }}</h1>
+    {{ content | safe }}
+  </article>
+</div>

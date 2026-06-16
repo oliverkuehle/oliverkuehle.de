@@ -152,7 +152,7 @@ ul, ol {
   padding-left: 2em;
   margin: 1.5em 0;
 
-  li, li {
+  li {
     margin-bottom: 0.7rem;
 
     &::marker {
@@ -218,6 +218,7 @@ blockquote {
   gap: 15px;
   align-items: baseline;
   padding: 0.5rem 0;
+  margin: 0 !important;
 }
 
 @media (max-width: 575px) {
@@ -260,7 +261,12 @@ blockquote {
   }
 
   a {
+    color: var(--ink-2);
     
+    &:hover {
+      color: var(--ink);
+    }
+
     &::before {
       content: "#";
       display: inline-block;

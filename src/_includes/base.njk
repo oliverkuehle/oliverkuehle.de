@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="icon" href="/resources/favicon.png" />
+    <link rel="stylesheet" href="/main.css" />
+    {%- for style in styles %}
+    <link rel="stylesheet" href="/{{ style }}" />
+    {%- endfor %}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+    />
+  </head>
+  <body>
+    {{ content | safe }}
+  </body>
+</html>

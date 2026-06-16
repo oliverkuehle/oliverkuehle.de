@@ -264,3 +264,7 @@ scenicView.properties
 options.json
 
 _/**
+
+# Eleventy
+node_modules/
+_site/

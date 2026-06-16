@@ -1,0 +1,66 @@
+---
+layout: base.njk
+title: Oliver Kühle
+styles:
+  - intro.css
+---
+<div class="page">
+  <div class="page__header">
+    <div class="monogram-speech">
+      <img
+        src="/resources/ok-monogram.png"
+        alt="OK monogram"
+        class="monogram--png large"
+      />
+      <p class="speech">
+        "Working on creating perfect things in an imperfect world,"
+      </p>
+    </div>
+  </div>
+
+  <article class="page__content">
+    <div class="intro__lead">
+      <img
+        class="intro_pic"
+        src="/resources/profile-picture.jpg"
+        alt="Portrait of Oliver Kühle"
+      />
+      <div class="intro__greeting">
+        <span class="line">Hey,</span>
+        <span class="line">I'm <b>Oliver Kühle</b>,</span>
+        <span class="line"
+          >a human-centric <b>software and usability engineer</b>.</span
+        >
+      </div>
+    </div>
+    <nav class="intro__links">
+      <a href="/about.html">About me</a>
+      <a href="/now.html">What I'm doing now</a>
+    </nav>
+
+    <section class="section">
+      <h2 class="header">Keywords</h2>
+      <ul class="keywords">
+        {%- for keyword in collections.keywordList %}
+        <li><a href="/{{ keyword | slugify }}.html">{{ keyword }}</a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="header">Timeline</h2>
+      <ul class="rows">
+        {%- for note in collections.notes %}
+        <li class="row">
+          <span class="row__meta">
+            <span>{{ note.date | monthYear }}</span>
+          </span>
+          <span class="row__title">
+            <a href="{{ note.url }}">{{ note.data.title }}</a>
+          </span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+  </article>
+</div>

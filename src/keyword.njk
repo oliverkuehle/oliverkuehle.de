@@ -1,0 +1,41 @@
+---
+layout: base.njk
+pagination:
+  data: collections.keywordList
+  size: 1
+  alias: keyword
+permalink: "/{{ keyword | slugify }}.html"
+eleventyComputed:
+  title: "{{ keyword | capitalize }} — Oliver Kühle"
+---
+<div class="page page--moc">
+  <div class="page__header">
+    <a href="/" style="text-decoration: none">
+      <img
+        src="/resources/ok-monogram.png"
+        alt="OK monogram"
+        class="monogram--png medium"
+        style="width: 24px"
+      />
+    </a>
+    <aside>
+      <div class="meta-label">Keyword</div>
+    </aside>
+  </div>
+
+  <div class="page__content">
+    <h1>{{ keyword | capitalize }}</h1>
+    <ul class="rows">
+      {%- for note in collections.notes | notesWithKeyword(keyword) %}
+      <li class="row">
+        <span class="row__meta">
+          <span>{{ note.date | monthYear }}</span>
+        </span>
+        <span class="row__title">
+          <a href="{{ note.url }}">{{ note.data.title }}</a>
+        </span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>
