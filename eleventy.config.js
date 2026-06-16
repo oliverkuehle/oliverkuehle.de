@@ -72,6 +72,105 @@ function calloutPlugin(md) {
   });
 }
 
+// Generic media container for image layouts:
+//   :::columns wide
+//   ![alt](/resources/a.png "Caption A")
+//
+//   ![alt](/resources/b.png "Caption B")
+//   :::
+// Each space-separated name becomes a `media--<name>` modifier on a
+// <div class="media …">. Content inside is parsed as normal Markdown.
+function mediaPlugin(md) {
+  md.block.ruler.before("fence", "media", (state, startLine, endLine, silent) => {
+    const start = state.bMarks[startLine] + state.tShift[startLine];
+    const max = state.eMarks[startLine];
+    if (state.src.slice(start, start + 3) !== ":::") return false;
+
+    const params = state.src.slice(start + 3, max).trim();
+    if (!params) return false; // a bare ::: only closes an open block
+
+    if (silent) return true;
+
+    // Find the closing fence (a line that is just ":::").
+    let nextLine = startLine;
+    let haveEnd = false;
+    while (++nextLine < endLine) {
+      const lineStart = state.bMarks[nextLine] + state.tShift[nextLine];
+      const lineMax = state.eMarks[nextLine];
+      if (
+        state.src.slice(lineStart, lineStart + 3) === ":::" &&
+        !state.src.slice(lineStart + 3, lineMax).trim()
+      ) {
+        haveEnd = true;
+        break;
+      }
+    }
+
+    const classes = params.split(/\s+/).map((c) => `media--${c}`).join(" ");
+    const oldLineMax = state.lineMax;
+    state.lineMax = nextLine;
+
+    const open = state.push("media_open", "div", 1);
+    open.attrSet("class", `media ${classes}`);
+    open.block = true;
+    open.map = [startLine, nextLine];
+
+    state.md.block.tokenize(state, startLine + 1, nextLine);
+
+    const close = state.push("media_close", "div", -1);
+    close.block = true;
+
+    state.lineMax = oldLineMax;
+    state.line = nextLine + (haveEnd ? 1 : 0);
+    return true;
+  });
+}
+
+// Turn a standalone image carrying a title into <figure> + <figcaption>:
+//   ![alt for screen readers](/resources/x.png "Visible caption")
+// The alt stays for accessibility; the title becomes the visible caption.
+function figurePlugin(md) {
+  md.core.ruler.after("inline", "figures", (state) => {
+    const tokens = state.tokens;
+    for (let i = 0; i + 2 < tokens.length; i++) {
+      if (
+        tokens[i].type !== "paragraph_open" ||
+        tokens[i + 1].type !== "inline" ||
+        tokens[i + 2].type !== "paragraph_close"
+      ) continue;
+
+      const children = tokens[i + 1].children || [];
+      const meaningful = children.filter(
+        (t) => t.type !== "softbreak" && !(t.type === "text" && !t.content.trim())
+      );
+      if (meaningful.length !== 1 || meaningful[0].type !== "image") continue;
+
+      const image = meaningful[0];
+      const caption = image.attrGet("title");
+      if (!caption) continue;
+
+      // Drop the title so it isn't also a hover tooltip.
+      image.attrs = image.attrs.filter((a) => a[0] !== "title");
+
+      // Re-tag the wrapping paragraph as a <figure>.
+      tokens[i].tag = "figure";
+      tokens[i + 2].tag = "figure";
+
+      // Build the <figcaption>, parsing the caption as inline Markdown.
+      const capOpen = new state.Token("figcaption_open", "figcaption", 1);
+      capOpen.block = true;
+      const capInline = new state.Token("inline", "", 0);
+      capInline.content = caption;
+      capInline.children = [];
+      state.md.inline.parse(caption, state.md, state.env, capInline.children);
+      const capClose = new state.Token("figcaption_close", "figcaption", -1);
+      capClose.block = true;
+
+      tokens.splice(i + 2, 0, capOpen, capInline, capClose);
+    }
+  });
+}
+
 module.exports = function (eleventyConfig) {
   // ---------- Static assets ----------
   eleventyConfig.addPassthroughCopy("src/*.css");
@@ -82,6 +181,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.amendLibrary("md", (md) => {
     md.set({ html: true });
     md.use(calloutPlugin);
+    md.use(mediaPlugin);
+    md.use(figurePlugin);
   });
 
   // ---------- Date filters ----------
