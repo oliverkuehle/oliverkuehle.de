@@ -6,6 +6,9 @@ const MONTHS = [
 /** Normalise a keyword for grouping and slugs (case-insensitive). */
 const normalize = (k) => String(k).trim().toLowerCase();
 
+// All note-like content: full posts in notes/, link-only entries in redirects/.
+const CONTENT_GLOBS = ["src/notes/*.md", "src/redirects/*.md"];
+
 module.exports = function (eleventyConfig) {
   // ---------- Static assets ----------
   eleventyConfig.addPassthroughCopy("src/*.css");
@@ -28,7 +31,7 @@ module.exports = function (eleventyConfig) {
   // All published notes, newest first.
   eleventyConfig.addCollection("notes", (api) =>
     api
-      .getFilteredByGlob("src/notes/*.md")
+      .getFilteredByGlob(CONTENT_GLOBS)
       .filter((item) => item.data.published)
       .sort((a, b) => b.date - a.date)
   );
@@ -37,7 +40,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("keywordList", (api) => {
     const set = new Set();
     api
-      .getFilteredByGlob("src/notes/*.md")
+      .getFilteredByGlob(CONTENT_GLOBS)
       .filter((item) => item.data.published)
       .forEach((item) =>
         (item.data.keywords || []).forEach((k) => set.add(normalize(k)))

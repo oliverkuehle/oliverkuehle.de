@@ -8,6 +8,7 @@ permalink: "/{{ keyword | slugify }}.html"
 eleventyComputed:
   title: "{{ keyword | capitalize }} — Oliver Kühle"
 ---
+{% from "note-row.njk" import noteRow %}
 <div class="page page--moc">
   <div class="page__header">
     <a href="/" style="text-decoration: none">
@@ -27,14 +28,7 @@ eleventyComputed:
     <h1>{{ keyword | capitalize }}</h1>
     <ul class="rows">
       {%- for note in collections.notes | notesWithKeyword(keyword) %}
-      <li class="row">
-        <span class="row__meta">
-          <span>{{ note.date | monthYear }}</span>
-        </span>
-        <span class="row__title">
-          <a href="{{ note.url }}">{{ note.data.title }}</a>
-        </span>
-      </li>
+      {{ noteRow(note) }}
       {%- endfor %}
     </ul>
   </div>
