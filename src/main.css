@@ -200,6 +200,13 @@ blockquote {
   font-style: italic;
 }
 
+/* ---------- Horizontal rule ---------- */
+hr {
+  border: 0;
+  border-top: 0.5px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
 /* ---------- Callout / Card ---------- */
 .callout {
   margin: 1.5rem 0;
