@@ -194,6 +194,32 @@ blockquote {
   font-style: italic;
 }
 
+/* ---------- Callout / Card ---------- */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1em;
+  background: var(--paper-sunk);
+  border: 0.5px solid var(--rule-soft);
+  border-radius: 14px;
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout__title {
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.7rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid var(--rule-soft);
+}
+
 /* ---------- Section / List ---------- */
 .section {
   margin-top: 3rem;
