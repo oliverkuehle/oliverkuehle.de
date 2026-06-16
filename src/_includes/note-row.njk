@@ -7,8 +7,10 @@
     {%- if note.data.redirect %}
     <a href="{{ note.data.redirect }}" target="_blank" rel="noopener noreferrer">{{ note.data.title }}</a>
     <span class="msr open_in_new">open_in_new</span>
-    {%- else %}
+    {%- elif note.url %}
     <a href="{{ note.url }}">{{ note.data.title }}</a>
+    {%- else %}
+    {{ note.data.title }}
     {%- endif %}
   </span>
 </li>

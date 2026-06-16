@@ -39,13 +39,16 @@ is Nunjucks (`njk`) for both HTML and Markdown.
 
 ## Content model
 
-Two kinds of content, both Markdown with YAML frontmatter:
+Three kinds of list entry, all Markdown with YAML frontmatter. How a row renders
+is decided in `note-row.njk` (redirect → external link, page → internal link,
+otherwise plain text):
 
 - **Notes** (`src/notes/*.md`) → rendered as a page at `/<filename>.html`
-  (e.g. `about.md` → `/about.html`). Filename is the URL; see gotchas.
-- **Redirects** (`src/redirects/*.md`) → **no page** (`permalink: false`). They
-  still appear in lists, but the list entry links straight to the external
-  `redirect:` URL (with an `open_in_new` icon).
+  (e.g. `about.md` → `/about.html`); the row links to that page.
+- **Redirects** (`src/redirects/*.md`) → **no page** (`permalink: false`); the
+  row links straight to the external `redirect:` URL (with an `open_in_new` icon).
+- **List-only entries** — a note in `src/notes/` with `link: false`: **no page**
+  is generated, and the row shows the title as **plain text** (no link).
 
 ### Frontmatter fields
 
@@ -56,6 +59,7 @@ Two kinds of content, both Markdown with YAML frontmatter:
 | `published` | bool    | must be `true` to appear anywhere |
 | `keywords`  | list    | categories; drive keyword pages (case-insensitive) |
 | `ongoing`   | bool    | shows **Ongoing** instead of the date, sorts to top |
+| `link`      | bool    | `false` = list-only entry: no page, rendered as plain text |
 | `redirect`  | URL     | *(redirects only)* external destination |
 
 ## How it fits together
