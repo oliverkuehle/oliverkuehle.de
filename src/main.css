@@ -225,11 +225,14 @@ blockquote {
   margin-top: 3rem;
 }
 
-.header {  
-  font-size: 1.2rem;
-  color: var(--ink-2) !important;
-  margin: 0 0 0.2em 0;
-  border-bottom: 0.5px solid var(--rule-soft);  
+.header {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.5rem 0;
+  border-bottom: 0.5px solid var(--rule-soft);
 }
 
 .rows {
@@ -287,11 +290,6 @@ blockquote {
   }
 
   a {
-    color: var(--ink-2);
-    
-    &:hover {
-      color: var(--ink);
-    }
 
     &::before {
       content: "#";
