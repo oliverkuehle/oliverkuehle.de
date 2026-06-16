@@ -215,15 +215,6 @@ blockquote {
   margin: 0;
   font-size: 1.2rem;
   color: var(--ink-2) !important;
-
-  a {
-    color: inherit !important;
-    
-    &:hover {
-      color: var(--ink) !important;
-    }
-  }
-
 }
 
 .header .action {
@@ -245,9 +236,18 @@ blockquote {
 }
 
 .row {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px;
+  align-items: baseline;
   padding: 0.5rem 0;
+}
+
+@media (max-width: 575px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 
 .row__meta {
@@ -282,24 +282,19 @@ blockquote {
   gap: 0.2em 0.9em;
   padding: 0;
   margin: 0.7rem 0 0;
-  font-size: 0.95em;
 
   li {
     margin: 0;
   }
 
   a {
-    color: var(--ink-2);
-    text-decoration: none;
-
+    /* color: var(--ink-2); */
+    
     &::before {
       content: "#";
+      display: inline-block;
       margin-right: 0.1em;
       color: var(--ink-3);
-    }
-
-    &:hover {
-      color: var(--ink);
     }
   }
 }
