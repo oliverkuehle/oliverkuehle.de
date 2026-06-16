@@ -12,13 +12,6 @@ layout: base.njk
       />
     </a>
     <aside>
-    {# {%- if keywords %}
-      <ul class="keywords">
-        {%- for keyword in keywords %}
-        <li><a href="/{{ keyword | slugify }}.html">{{ keyword | lower }}</a></li>
-        {%- endfor %}
-      </ul>
-    {%- endif %} #}
       <div>
         <div class="meta-label">Published</div>
         {{ date | readableDate }}

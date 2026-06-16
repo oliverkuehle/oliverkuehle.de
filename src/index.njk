@@ -35,15 +35,15 @@ styles:
       </div>
     </div>
     <nav class="intro__links">
-      <a href="/about.html">About me</a>
-      <a href="/now.html">What I'm doing now</a>
+      <a href="/about">About me</a>
+      <a href="/now">What I'm doing now</a>
     </nav>
 
     <section class="section">
       <h2 class="header">Keywords</h2>
       <ul class="keywords">
         {%- for keyword in collections.keywordList %}
-        <li><a href="/{{ keyword | slugify }}.html">{{ keyword }}</a></li>
+        <li><a href="/{{ keyword | slugify }}">{{ keyword }}</a></li>
         {%- endfor %}
       </ul>
     </section>
