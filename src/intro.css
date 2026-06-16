@@ -44,6 +44,7 @@
   flex: 0 0 auto;
   height: 145px !important;
   width: auto;
+  margin: 0 !important;
 }
 
 .intro__lead {
