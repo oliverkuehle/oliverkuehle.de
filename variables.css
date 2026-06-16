@@ -14,6 +14,22 @@
   src: url("resources/fonts/chivo-italic.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("resources/fonts/chivo-mono-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chivo Mono";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("resources/fonts/chivo-mono-italic.woff2") format("woff2");
+}
+
 :root {
   /* Color */
   --paper: #fffef8;
@@ -28,5 +44,5 @@
 
   /* Font */
   --font: "Chivo", system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: "Chivo Mono", monospace;
 }
