@@ -1,6 +1,6 @@
 ---
 title: Enhanced Frontend for Dufs
-published: true
+published: false
 date: 2026-06-01
 ongoing: true
 keywords:
