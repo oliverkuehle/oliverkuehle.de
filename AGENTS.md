@@ -16,7 +16,7 @@ Node 24. Only dependency is `@11ty/eleventy`. `_site/` and `node_modules/` are g
 ## Layout
 
 ```
-eleventy.config.js     # all config: collections, filters, markdown plugin
+eleventy.config.js     # all config: collections, filters, markdown plugins
 src/
   index.njk            # homepage: intro + Keywords + Timeline
   keyword.njk          # paginated → one /<keyword>.html page per keyword
@@ -74,16 +74,42 @@ Two kinds of content, both Markdown with YAML frontmatter:
 
 ## Markdown features
 
-- Raw HTML is enabled (`md.set({ html: true })`).
-- **Obsidian-style callouts** via a small custom markdown-it plugin (`calloutPlugin`):
+Three small custom markdown-it plugins live in `eleventy.config.js` (raw HTML is
+also enabled via `md.set({ html: true })`):
+
+- **Callouts** (`calloutPlugin`) — Obsidian syntax:
   ```markdown
   > [!note] Optional title
   > Body **markdown** here.
   ```
-  becomes `<aside class="callout callout--note">` with a `.callout__title`. The
-  type (`note`, `tip`, …) becomes a `callout--<type>` modifier class for styling.
-- **Images**: put the file in `src/resources/`, reference as `/resources/x.png`
-  (Markdown `![alt](/resources/x.png)` or raw `<img>`).
+  → `<aside class="callout callout--note">` with a `.callout__title`. The type
+  (`note`, `tip`, …) becomes a `callout--<type>` modifier class.
+
+- **Media layouts** (`mediaPlugin`) — fenced `:::name` blocks for image layout:
+  ```markdown
+  :::columns wide
+  ![alt](/resources/a.png "Caption A")
+
+  ![alt](/resources/b.png "Caption B")
+  :::
+  ```
+  → `<div class="media media--columns media--wide">`. Each space-separated name
+  becomes a `media--<name>` modifier; content inside is normal Markdown. Variants
+  styled in `main.css`: `small` / `medium` (constrained width), `left` / `right`
+  (alignment), `columns` (2-up, collapses on mobile), `wide` (breakout past the
+  650px column). New variants are just CSS. *In a `columns` block, separate the
+  two images with a blank line so they become two grid items.*
+
+- **Captions / figures** (`figurePlugin`) — a standalone image with a title
+  becomes `<figure>` + `<figcaption>`:
+  ```markdown
+  ![alt for screen readers](/resources/x.png "Visible caption")
+  ```
+  `alt` stays for accessibility; the title is the visible caption.
+
+- **Images & files**: drop the file in `src/resources/`, reference root-relative
+  as `/resources/x.png` (images, PDFs, etc.). Content images are centered by
+  default; `left`/`right` modifiers override.
 
 ## Styling
 
