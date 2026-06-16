@@ -108,7 +108,7 @@ a {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 0.5px;
-  text-decoration-color: var(--rule);
+  text-decoration-color: var(--rule-underline);
 }
 a:hover {
   color: var(--ink-2);

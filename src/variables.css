@@ -39,6 +39,7 @@
   --ink-3: rgb(159, 159, 159);
   --rule: rgba(115, 115, 115, 0.32);
   --rule-soft: rgba(115, 115, 115, 0.16);
+  --rule-underline: rgba(115, 115, 115, 0.4);
   --shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   --shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.06);
 
