@@ -42,7 +42,7 @@
   box-shadow: var(--shadow);
   object-fit: cover;
   flex: 0 0 auto;
-  height: 145px;
+  height: 145px !important;
   width: auto;
 }
 
