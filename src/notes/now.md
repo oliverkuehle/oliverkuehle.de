@@ -1,5 +1,5 @@
 ---
-title: What I'm doing now
+title: What I'm up to now
 published: true
 keywords:
   - Writing
