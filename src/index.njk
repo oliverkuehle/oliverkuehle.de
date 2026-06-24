@@ -40,19 +40,12 @@ styles:
     </nav>
 
     <section class="section">
-      <h2 class="header">Keywords</h2>
-      <ul class="keywords">
-        {%- for keyword in collections.keywordList %}
-        <li><a href="/{{ keyword | slugify }}">{{ keyword }}</a></li>
-        {%- endfor %}
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2 class="header">Timeline</h2>
+      <h2 class="header">Some of my work</h2>
       <ul class="rows">
         {%- for note in collections.notes %}
+        {%- if note.fileSlug not in ["about", "now"] %}
         {{ noteRow(note) }}
+        {%- endif %}
         {%- endfor %}
       </ul>
     </section>
